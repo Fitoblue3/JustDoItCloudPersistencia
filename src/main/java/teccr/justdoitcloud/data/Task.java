@@ -2,6 +2,7 @@ package teccr.justdoitcloud.data;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
@@ -21,10 +22,18 @@ public class Task {
     private final LocalDateTime createdAt;
     private final LocalDate deadline;
     @NotNull
-    private final Status status;
+    private Status status;
 
     @Column("user_id")
     private Long userId;
+
+    public Task(Long id, String description, LocalDateTime createdAt, LocalDate deadline, Status status) {
+        this.id = id;
+        this.description = description;
+        this.createdAt = createdAt;
+        this.deadline = deadline;
+        this.status = status;
+    }
 
     public enum Status {
         PENDING,

@@ -85,6 +85,12 @@
                                 No especificada
                             </span>
                         </div>
+                        <div class="task-btn">
+                            <form th:action="@{/user/tasks/advance}" method="post">
+                                <input type="hidden" name="id" th:value="${task.id}">
+                                <button type="submit" class="btn-next">Avanzar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -98,7 +104,14 @@
                 <div th:each="task : ${user.tasks.?[status.name() == 'INPROGRESS']}">
                     <div class="task-item inprogress">
                         <div class="task-desc" th:text="${task.description}">Descripción de la tarea...</div>
+                        <div class="task-btn">
+                            <form th:action="@{/user/tasks/advance}" method="post">
+                                <input type="hidden" name="id" th:value="${task.id}">
+                                <button type="submit" class="btn-next">Avanzar</button>
+                            </form>
+                        </div>
                     </div>
+
                 </div>
             </section>
 
